@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Romantic Onboarding</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="onboarding-screen">
+    <div class="content">
+      <div class="name-container">
+        <h1>Enter Your Name</h1>
+        <input type="text" id="yourNameInput" placeholder="Your name..." />
+        <input type="text" id="loverNameInput" placeholder="Your lover's name..." />
+        <button id="submitButton">
+          <i class="fas fa-heart"></i> Submit
+        </button>
+      </div>
+    </div>
+    <div class="background-animation"></div>
+  </div>
+
+  <script>
+    document.getElementById("submitButton").addEventListener("click", function () {
+      const yourName = document.getElementById("yourNameInput").value.trim();
+      const loverName = document.getElementById("loverNameInput").value.trim();
+
+      if (yourName && loverName) {
+        // Redirect to message.html with names
+        window.location.href = `message.html?yourName=${encodeURIComponent(yourName)}&loverName=${encodeURIComponent(loverName)}`;
+      } else {
+        alert("Please enter both names!");
+      }
+    });
+  </script>
+</body>
+</html>

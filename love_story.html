@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Love Story</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3, #fbc2eb, #a6c1ee, #f6d365);
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .love-story-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .slideshow {
+      position: relative;
+      width: 100%;
+      height: 50vh;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      padding-bottom: 20px;
+    }
+
+    .slideshow-track {
+      display: flex;
+      width: 200%;
+      animation: slideshow 12s linear infinite;
+    }
+
+    .slideshow img {
+      width: auto;
+      height: 50vh;
+      margin: 0 30px;
+      border-radius: 25px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.5s ease-in-out, opacity 0.5s;
+    }
+
+    .slideshow img:hover {
+      transform: scale(1.1);
+      opacity: 0.9;
+    }
+
+    @keyframes slideshow {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .love-story {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 50px;
+      border-radius: 25px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeIn 2s forwards ease-in-out;
+      margin-top: 30px;
+      max-width: 900px;
+      text-align: justify;
+    }
+
+    .love-story h1 {
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .love-story p {
+      font-size: 1.7rem;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+      text-align: justify;
+    }
+
+    .name {
+      font-weight: bold;
+      font-size: 3rem;
+      animation: glow 1.5s infinite alternate;
+    }
+
+    #yourName { color: #ffcc00; }
+    #loverName { color: #ff66b2; }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+      100% { text-shadow: 0 0 20px rgba(255, 255, 255, 1); }
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      opacity: 0;
+      animation: fadeWords 5s forwards;
+    }
+
+    @keyframes fadeWords {
+      0% { opacity: 0; }
+      20% { opacity: 0.2; }
+      40% { opacity: 0.4; }
+      60% { opacity: 0.6; }
+      80% { opacity: 0.8; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <audio controls autoplay loop>
+    <source src="audio/love-song.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="love-story-container">
+    <div class="slideshow">
+      <div class="slideshow-track">
+        <img src="images/img1.jpg" alt="Love Moment 1">
+        <img src="images/img2.jpg" alt="Love Moment 2">
+        <img src="images/img3.jpg" alt="Love Moment 3">
+        <img src="images/img4.jpg" alt="Love Moment 4">
+        <img src="images/img5.jpg" alt="Love Moment 5">
+        <img src="images/img6.jpg" alt="Love Moment 6">
+      </div>
+    </div>
+
+    <div class="love-story">
+      <h1><span id="yourName" class="name"></span> & <span id="loverName" class="name"></span></h1>
+      <p>
+        For six beautiful years, we have walked this journey of love together, and now, we step into our seventh year. 
+        Have you ever wondered how two hearts, once strangers, found their way to each other? 
+        What made every shared smile, every whispered dream, and every moment spent together so special?
+        With every sunrise, our love grew stronger. With every challenge, we held onto each other even tighter. 
+        Today, I ask you—will you continue this beautiful journey with me, through every joy, every adventure, and every tomorrow? 
+        Will you be mine forever? ❤️
+      </p>
+    </div>
+  </div>
+
+  <div class="footer">Happy Valentine's Day ❤️</div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const yourName = urlParams.get('yourName');
+    const loverName = urlParams.get('loverName');
+
+    if (yourName && loverName) {
+      document.getElementById('yourName').textContent = yourName;
+      document.getElementById('loverName').textContent = loverName;
+    } else {
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>

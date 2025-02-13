@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>True Love</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="onboarding-screen">
+    <div class="content">
+      <div class="message-container">
+        <h1 id="displayName"></h1>
+        <p>Is Your Happiness</p>
+        <h2>True Love</h2>
+        <button id="nextButton">
+          <i class="fas fa-heart"></i> Next
+        </button>
+      </div>
+    </div>
+    <div class="background-animation"></div>
+  </div>
+
+  <script>
+    // Get names from URL query parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const loverName = urlParams.get('loverName');
+    const yourName = urlParams.get('yourName');
+    
+    if (loverName && yourName) {
+      document.getElementById('displayName').textContent = loverName;
+    } else {
+      window.location.href = 'index.html';
+    }
+
+    document.getElementById('nextButton').addEventListener('click', () => {
+      // Redirect to love_story.html with names
+      window.location.href = `love_story.html?yourName=${encodeURIComponent(yourName)}&loverName=${encodeURIComponent(loverName)}`;
+    });
+  </script>
+</body>
+</html>
